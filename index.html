@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+      <form>
+          <textarea name="Message" id="textarea" value=""></textarea>
+          <button type="button" name="button" onclick="chiffrement(this)">crypter</button>
+          <div id="crypter">
+
+          </div>
+      </form>
+  </body>
+  <script type="text/javascript">
+      var textareaElement = document.getElementById("textarea");
+      var crypterElement = document.getElementById("crypter");
+        var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        // var cifrado = "BCDEFGHIJKLMNOPQRSTUVWXYZA";
+        var decallage = 4;
+
+      function chiffrement(){
+          var valueTextarea = textareaElement.value;
+        valueTextarea = valueTextarea.toUpperCase();
+        var message = "";
+
+        for (var i=0; i<valueTextarea.length; i++){
+            var lettre = valueTextarea[i];
+            var index = alphabet.indexOf(lettre);
+
+
+
+            if (index >= (26 - decallage) ){
+                message += alphabet[0+(decallage-1)]
+            }
+            else if (index==-1){
+                message += ' ';
+            }
+            else {
+                message += alphabet[index+decallage]
+            }
+
+        }
+
+        crypterElement.innerHTML = message;
+      }
+  </script>
+</html>
